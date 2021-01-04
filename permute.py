@@ -91,6 +91,25 @@ def permutation(pt, table, n):
         permuted = permuted + pt[table[i]-1]
     return permuted
 
+def dec2bin(num):
+    res = bin(num).replace("0b", "") 
+    if(len(res)%4 != 0): 
+        div = len(res) / 4
+        div = int(div) 
+        counter =(4 * (div + 1)) - len(res)  
+        for i in range(0, counter): 
+            res = '0' + res 
+    return res 
+
+def sBox(s, S_BOX):
+    s = 110011
+    sboxTable = ""
+    for i in range(0,8):
+        val = S_BOX[i][3][9]
+        sboxTable = sboxTable + dec2bin(val)
+    return sboxTable
+    print(sboxTable)
+
 
 
 ipData = '1248842112488421'
@@ -106,6 +125,7 @@ print("Result of E        : ", permutation(convert2Bin(e), EXP_E, 48))
 print()
 print("Convert to bin of P: ",convert2Bin(p))
 print("Result of P        : ", permutation(convert2Bin(p), P, 32))
-
+print()
+print("Si(110011): ",sBox(110011,S_BOX))
 
 

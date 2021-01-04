@@ -8,16 +8,6 @@ S_BOX = [[[14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7], [0, 15, 7, 4, 
          [[13, 2, 8, 4, 6, 15, 11, 1, 10, 9, 3, 14, 5, 0, 12, 7], [1, 15, 13, 8, 10, 3, 7, 4, 12, 5, 6, 11, 0, 14, 9, 2], [7, 11, 4, 1, 9, 12, 14, 2, 0, 6, 10, 13, 15, 3, 5, 8],[2, 1, 14, 7, 4, 10, 8, 13, 15, 12, 9, 0, 3, 5, 6, 11]]
         ]
 
-def bin2dec(binary):
-    binary1 = binary 
-    decimal, i, n = 0, 0, 0
-    while(binary != 0): 
-        dec = binary % 10
-        decimal = decimal + dec * pow(2, i) 
-        binary = binary//10
-        i += 1
-    return decimal
-    
 
 def dec2bin(num):
     res = bin(num).replace("0b", "") 
@@ -29,15 +19,13 @@ def dec2bin(num):
             res = '0' + res 
     return res 
 
-def sBox(S_BOX, s):
-    s = "110011"
+def sBox(s, S_BOX):
+    s = 110011
     sboxTable = ""
     for i in range(0,8):
-        row = bin2dec(int(s[i * 6] + s[i * 6 + 5]))
-        col = bin2dec(int(s[i * 6 + 1] + s[i * 6 + 2] + s[i * 6 + 3] + s[i * 6 + 4]))
-        val = S_BOX[i][row][col]
+        val = S_BOX[i][3][9]
         sboxTable = sboxTable + dec2bin(val)
     return sboxTable
     print(sboxTable)
 
-print(sBox("110011",S_BOX))
+print("Si(110011): ",sBox(110011,S_BOX))
