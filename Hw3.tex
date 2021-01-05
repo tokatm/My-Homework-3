@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{article}
+\documentclass[11pt]{article}
 \usepackage{amsthm}
 \usepackage{xspace}
 \usepackage{siunitx}
@@ -8,6 +8,7 @@
 \usepackage{listings}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\DeclareUnicodeCharacter{2212}{-}
 \begin{document}
 \title{Homework-3}
 \author{Mustafa Tokat}
@@ -21,12 +22,40 @@ bla bla
 ...
 
 \subsection{Problem 2}
+\subsubsection{}
+\textbf{(1)Suppose that $K_{1}$ = $K_{2}$ = · · · = $K_{16}$. Show that all bits in $C_{1}$ are equal and all bits in $D_{1}$
+are equal}\\
+\textbf{(2)Show that there are exactly 4 DES keys for which all round keys are the same. They are
+called weak DES keys.} 
+Key Scheduling ciphertext üretiminden tamamen bağımsız bir süreçtir. Burada 56 bitlik anahtarın ilk yarısı left, ikinci yaısı right olrak adlandırılır. Ve bu sürecin tamamı logictir ve inverse edilebilir. Kısa çıklamanın ardından Ci ve Di lerin eşit olmasının arkasındaki mantıksal bağı kurabiliriz.  Ki değerleri Ci ve Di değerlerinin kendi içlerinde lefthift işlemindensonra yanyana gelmesinden oluşmaktadır.
+Varsayımımıza göre bütün anahtarlarımız eşitse,bu aynı zamanda bütün Ci lerin eşit olduğu ve bütün Di 
+ lerin de eşit olduğu  anlamına gelir. 
+
+Dikkatlice key schedulıng şemasını incelersek drop bazı bitleri drop edilmiş 48 bitlik $PC_{2}$ permutastyonun  ilk yarısı 1-28 bitlerden ikini yarısın da 29-48. bitlerden oluştuğunu görebiliriz. Dolayısıyla $PC_{2}$ den çıkan Ki lerin ilk 24 biti left(Ci), ikinci 24 bitinin ise right(Di) bitleri oluşturduğunu rahatlıkl söyleyebiliriz.
+Aşağıdaki tablo açık olarak gösterecektir. 
 
 
+\subsubsection{}
+\textbf{(3)Determine these 4 weak DES keys.}
+Bu değerler NIST tarafından yayınlanmış olan blabla sayısında açıklanmıştır. Ve aşağıaki gibidir.
+\\a = ....
 
-dsdsdsxs
 
+\subsection{Problem 3}
 
+\subsection{Problem 4}
+\textbf{Consider the AES/Rijndael algorithm and its Galois field GF($2^{8}$)}
+\subsubsection{Compute the sum (a7) + (5c) in GF($2^{8}$)}
+dedede
+\subsubsection{Compute the product (a7) × (5c) in GF($2^{8}$)}
+dedede
+\subsubsection{Compute S(a7)}
+dedede
+\subsubsection{Compute $S^{-1}$(5c)}
+dedede
+\subsection{Problem 5}
+
+deded
 
 
 
