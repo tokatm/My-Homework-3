@@ -1,24 +1,4 @@
-import numpy as np
+from sympy import gcdex
+from sympy.abc import x
 
-
-m = input("değer gir: ").split(',')
-#s = input("ikinci gir: ").split(',')
-
-x = np.poly1d(list(map(int, m)))
-#y = np.poly1d(list(map(int, s)))
-p = np.poly1d([1,0,0,0,1,1,0,1,1])
-
-
-def inv(x,p):
-   k = np.polydiv(x,p)
-   if 
-
-inv(x,y)
-
-
-#%%
-'''
-   #res = np.polydiv(k,p)
-   quotient, remainder = np.polydiv(k,p)
-   list_e = (remainder.coefficients % 2)
-   print(np.poly1d(list_e)) 
+print(gcdex(x+1, x**8 + x**4 + x**3 + x + 1))

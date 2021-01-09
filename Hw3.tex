@@ -27,17 +27,22 @@ bla bla
 are equal}\\
 \textbf{(2)Show that there are exactly 4 DES keys for which all round keys are the same. They are
 called weak DES keys.} 
-Key Scheduling ciphertext üretiminden tamamen bağımsız bir süreçtir. Burada 56 bitlik anahtarın ilk yarısı left, ikinci yaısı right olrak adlandırılır. Ve bu sürecin tamamı logictir ve inverse edilebilir. Kısa çıklamanın ardından Ci ve Di lerin eşit olmasının arkasındaki mantıksal bağı kurabiliriz.  Ki değerleri Ci ve Di değerlerinin kendi içlerinde lefthift işlemindensonra yanyana gelmesinden oluşmaktadır.
-Varsayımımıza göre bütün anahtarlarımız eşitse,bu aynı zamanda bütün Ci lerin eşit olduğu ve bütün Di 
- lerin de eşit olduğu  anlamına gelir. 
+Key Scheduling ciphertext üretiminden tamamen bağımsız bir süreçtir. Burada 56 bitlik anahtarın ilk yarısı left, 
+ikinci yaısı right olrak adlandırılır. Ve bu sürecin tamamı logictir ve inverse edilebilir. Kısa çıklamanın ardından 
+Ci ve Di lerin eşit olmasının arkasındaki mantıksal bağı kurabiliriz.  Ki değerleri Ci ve Di değerlerinin kendi içlerinde
+ lefthift işlemindensonra yanyana gelmesinden oluşmaktadır.
+Varsayımımıza göre bütün anahtarlarımız eşitse,bu aynı zamanda bütün Ci lerin eşit olduğu ve bütün Di lerin de eşit olduğu  anlamına gelir. 
+Durumu ornek uzerinden aciklamak icin 'CryptoEn' kelimesini encrypt ettik ve sonuclar asagidaki tabloda goruldugu gibidir.
 
-Dikkatlice key schedulıng şemasını incelersek drop bazı bitleri drop edilmiş 48 bitlik $PC_{2}$ permutastyonun  ilk yarısı 1-28 bitlerden ikini yarısın da 29-48. bitlerden oluştuğunu görebiliriz. Dolayısıyla $PC_{2}$ den çıkan Ki lerin ilk 24 biti left(Ci), ikinci 24 bitinin ise right(Di) bitleri oluşturduğunu rahatlıkl söyleyebiliriz.
+Dikkatlice key schedulıng şemasını incelersek  bazı bitleri drop edilmiş 48 bitlik $PC_{2}$ permutastyonun 
+ ilk yarısı 1-28 bitlerden ikini yarısın da 29-48. bitlerden oluştuğunu görebiliriz. Dolayısıyla $PC_{2}$ den çıkan
+  Ki lerin ilk 24 biti left(Ci), ikinci 24 bitinin ise right(Di) bitleri oluşturduğunu rahatlıkla söyleyebiliriz.
 Aşağıdaki tablo açık olarak gösterecektir. 
 
 
 \subsubsection{}
 \textbf{(3)Determine these 4 weak DES keys.}
-Bu değerler NIST tarafından yayınlanmış olan blabla sayısında açıklanmıştır. Ve aşağıaki gibidir.
+Bu değerler NIST tarafından Jan. 2012 de yayınlanmış olan blabla sayısında açıklanmıştır. Ve aşağıaki gibidir.
 \\a = ....
 
 
