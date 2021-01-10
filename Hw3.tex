@@ -20,12 +20,14 @@
 \author{Mustafa Tokat}
 \maketitle
 \section{Introduction}
-I analyzed several paper together with our lectures during my homework. I studied to understand those, followed step by step entire of the process.
+
+\paragraph{}I analyzed several paper together with our lectures during my homework. I studied to understand those, followed step by step entire of the process.
  Now, we have to 5 problems and will try to solve step by step these.
 \section{Analysis of problems}
 \subsection{Problem 1}
- 
-\textbf{(1) IP(1248842112488421):}
+
+\subsubsection{}
+\paragraph{}\textbf{IP(1248842112488421):}
 In this process only place of values change, not themselves of values. We can figure out it with a little codes snippet.
 \lstset{language=Python}
 \lstset{frame=lines}
@@ -39,17 +41,21 @@ In this process only place of values change, not themselves of values. We can fi
         permuted = permuted + ptext[table[i]-1]
     return permuted
 \end{lstlisting}
-\underline{Result: 2211448844882211 }\\
-
-\bigskip\textbf{(2) E(84211248): }
+\bigskip\underline{Result: 2211448844882211 }\\
+\newpage\subsubsection{}
+\textbf{E(84211248): }
 By changing the parameters of the code snippet above, we can find the E permutation.\\
-\underline{Result: 4081028A4251}\\
 
-\bigskip\textbf{(3) P(12488421): }
+\bigskip\underline{Result: 4081028A4251}\\
+
+\subsubsection{}
+\bigskip\textbf{P(12488421): }
 Similarly;\\
-\underline{Result: 41010C4A}\\
 
-\newpage\textbf{(4) Si(110011) for i = 1; 2; : : : ; 8:}
+\bigskip\underline{Result: 41010C4A}\\
+
+\subsubsection{}
+\textbf{(4) Si(110011) for i = 1; 2; : : : ; 8:}
 We can use below codes: 
 \lstset{language=Python}
 \lstset{frame=lines}
@@ -61,7 +67,8 @@ We can use below codes:
         val = S_BOX[i][3][9]
         sboxTable = sboxTable + dec2bin(val)
 \end{lstlisting}
-\underline{Result: 1011 0110 1111 0100 1111 1110 0101 1100 }\\
+
+\bigskip\underline{Result: 1011 0110 1111 0100 1111 1110 0101 1100 }\\
 
 
 
@@ -99,16 +106,21 @@ formed from PC2 are right. The results is follow:
     {\includegraphics[width=0.4\textwidth]{Screenshot_1.png}}\quad
   \subfloat[E0E0E0E0 F1F1F1F1]
     {\includegraphics[width=0.4\textwidth]{Screenshot_2.png}}\\
+  \caption{4 Weak Keys}
+  \label{fig:4 Weak keys}
+\end{figure}
+
+\newpage
+\begin{figure}[ht!]
+  \centering
   \subfloat[FEFEFEFE FEFEFEFE]
     {\includegraphics[width=0.4\textwidth]{Screenshot_3.png}}\quad
   \subfloat[01010101 01010101]
     {\includegraphics[width=0.4\textwidth]{Screenshot_4.png}}
-  \caption{weak Keys}
+  \caption{4 Weak Keys}
   \label{fig:Weak keys}
 \end{figure}
 
-
-\clearpage
 \subsubsection{}\textbf{Determine these 4 weak DES keys.}\\
 
 The 4 weak keys were published by NIST in January 2012\footnote{Recommendation for the Triple Data Encryption Algorithm (TDEA)
@@ -120,7 +132,7 @@ Block Cipher, NIST, January 2012, p.11}. These are:\\
   \item 1F1F1F1F 0E0E0E0E
 \end{itemize}
 
-
+\newpage
 \subsection{Problem 3}
 \textbf{There are other modes of block cipher besides the ones we have learned. One of these modes
 is named Plaintext Block Chaining (PBC) Mode. On the encryption side, the following is
@@ -145,7 +157,7 @@ $M_{0}$ is Initialization Vector(IV). In this case, we can constitue to encrypti
 Interestingly, we  continue toward  from start to end in order to decryption, because decryption process continue toward 
 from end to start in some algorithm.
 
-\newpage\begin{itemize}
+\begin{itemize}
   \item for decryption:
   \begin{itemize}
     \item[$\circ$] $M_{1}$ = $D_{k}$($C_{1}$) $\oplus$ IV
@@ -159,7 +171,7 @@ from end to start in some algorithm.
 
 
 
-
+\newpage
 \subsection{Problem 4}
 \textbf{Consider the AES/Rijndael algorithm and its Galois field GF($2^{8}$)}
 \subsubsection{Compute the sum (a7) + (5c) in GF($2^{8}$)}
@@ -280,17 +292,239 @@ I will explain in details solving of this question in  next question, for this r
 \newpage
 \subsubsection{Compute $S^{-1}$(5c)}
 
-We will try to find on the c = A.b + d formula. In this formula, if a(x) $\neq$ 0 we will compute multiplicative inverse. After, the value found 
-will equal to b(x). 
+I will do it this way: at first, I will find corresponding of (5c) value from Sub-bytes table . Next, I will compute multiplicative inverse 
+in GF($2^{8}$) of this value.\\
+
+Also, I will try to find with c = A.b + d formula. In this formula, because of a(x) $\neq$ 0, we will compute its multiplicative inverse. After, 
+of its the result  will be equal to b(x). Then, we will multiplication of b(x) with a fixed A matrix. Finally, we will add the result of 
+this process also to a fixed  b(x) matrix.
+
+\begin{center}
+  (5c) = 01011100 (as an order; $x^{7}+x^{6}+ \Longrightarrow +x^{1}+x^{0}$ )
+\end{center}
+
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{caption={for polynomial multiplcation inverse in (GF$2^{8}$)}}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\footnotesize}
+\begin{lstlisting}
+  from sympy import gcdex
+  from sympy.abc import x
+
+  print(gcdex(x**6 + x**4 + x**3 + x**2, x**8 + x**4 + x**3 + x + 1))
+
+\end{lstlisting}
+
+\begin{center}
+  $a^{-1}$ = b(x) = $x^{6} + x^{4}$ + 1
+\end{center}
+
+\begin{center}
+  b(x) = 0 1 0 1 0 0 0 1 
+\end{center}
+
+And we will think as a vector;
+
+
+\begin{center}
+$$b (x) = 
+\begin{bmatrix} 
+ 1\\
+ 0\\
+ 0\\
+ 0\\
+ 1\\
+ 0\\
+ 1\\
+ 0\\
+
+\end{bmatrix}
+\quad
+$$
+\end{center}
+
+Well, let's multiplicative with fixed A matrix and its the result add with fixed d vector;\\
+
+
+\begin{center}
+  \[
+\begin{bmatrix}
+  1& 0& 0& 0& 1& 1& 1& 1\\
+  1& 1& 0& 0& 0& 1& 1& 1\\
+  1& 1& 1& 0& 0& 0& 1& 1\\
+  1& 1& 1& 1& 0& 0& 0& 1\\
+  1& 1& 1& 1& 1& 0& 0& 0\\
+  0& 1& 1& 1& 1& 1& 0& 0\\
+  0& 0& 1& 1& 1& 1& 1& 0\\
+  0& 0& 0& 1& 1& 1& 1& 1\\ 
+\end{bmatrix}
+\mathsf{X}
+\begin{bmatrix}
+  1\\
+  0\\
+  0\\
+  0\\
+  1\\
+  0\\
+  1\\
+  0\\  
+\end{bmatrix} 
+\oplus 
+\begin{bmatrix}
+  1\\
+  1\\
+  0\\
+  0\\
+  0\\
+  1\\
+  1\\
+  0\\ 
+\end{bmatrix}
+=
+\]
+\end{center}
+
+
+\begin{center}
+  $$S(5c) = 
+  \begin{bmatrix} 
+   0\\
+   1\\
+   0\\
+   1\\
+   0\\
+   0\\
+   1\\
+   0\\
+  
+  \end{bmatrix}
+  \quad
+  $$
+\end{center}
+
+I will see as a polynomial to this value. Then;\\
+
+\begin{center}
+  = 0 1 0 0 1 0 1 0 = $x^{6} + x^{3}$ + x. 
+\end{center}
+
+Well, finally, I will compute its multiplicative inverse with the same code snippet.
+
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{caption={for polynomial multiplcation inverse in (GF$2^{8}$)}}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\footnotesize}
+\begin{lstlisting}
+  from sympy import gcdex
+  from sympy.abc import x
+
+  print(gcdex(x**6 + x**3 + x, x**8 + x**4 + x**3 + x + 1))
+
+\end{lstlisting}
+
+\bigskip
+\underline{Result: }  $x^{7} + x^{5} + x^{3}$ + x + 1
+
+\newpage
 \subsection{Problem 5}
-
-deded
-
-
-
+\textbf{The definition of the SubBytes function is given as\\ \begin{center}f(a) = A $a^{-1}$ $\oplus$ d\end{center} for a fixed 8 x 8 matrix
+A and 8 x 1 vector d. Let a = x + 1. Compute f(a) using the SubBytes lookup table and then using the above definition. 
+Show that these values are equal.}\\
 
 
+Also, as like above process, I will benefit from the same code snippet. But first up, I need to find looking to the polynomial from Sub-Byte Table \\
 
+\begin{center}
+  a(x+1) = $\underbrace{0 0 0 0}_\text{0} \underbrace{0 0 1 1}_\text{3}  $(as binary) 
+   = (03)\\
+   = \textbf{(7b) from Sub-byte table}
+\end{center}
+
+\lstset{language=Python}
+\lstset{frame=lines}
+\lstset{caption={for polynomial multiplcation inverse in (GF$2^{8}$)}}
+\lstset{label={lst:code_direct}}
+\lstset{basicstyle=\footnotesize}
+\begin{lstlisting}
+  from sympy import gcdex
+  from sympy.abc import x
+
+  print(gcdex(x + 1, x**8 + x**4 + x**3 + x + 1))
+
+\end{lstlisting}
+
+\begin{center}
+  b(x) = $x^{7} + x^{6} + x^{5} + x^{4} + x^{2}$ + x\\
+  \bigskip
+  b(x) = 1 1 1 1 0 1 1 0(as binary)
+\end{center}
+
+Then, we will multiplication of b(x) with a fixed A matrix.  Finally, we will add the result of this process also to a fixed b(x) matrix.\\
+
+\begin{center}
+  \[
+\begin{bmatrix}
+  1& 0& 0& 0& 1& 1& 1& 1\\
+  1& 1& 0& 0& 0& 1& 1& 1\\
+  1& 1& 1& 0& 0& 0& 1& 1\\
+  1& 1& 1& 1& 0& 0& 0& 1\\
+  1& 1& 1& 1& 1& 0& 0& 0\\
+  0& 1& 1& 1& 1& 1& 0& 0\\
+  0& 0& 1& 1& 1& 1& 1& 0\\
+  0& 0& 0& 1& 1& 1& 1& 1\\ 
+\end{bmatrix}
+\mathsf{X}
+\begin{bmatrix}
+  0\\
+  1\\
+  1\\
+  0\\
+  1\\
+  1\\
+  1\\
+  1\\  
+\end{bmatrix} 
+\oplus 
+\begin{bmatrix}
+  1\\
+  1\\
+  0\\
+  0\\
+  0\\
+  1\\
+  1\\
+  0\\ 
+\end{bmatrix}
+=
+\]
+\end{center}
+
+\begin{center}
+  $$f(f) = 
+  \begin{bmatrix} 
+   1\\
+   1\\
+   0\\
+   1\\
+   1\\
+   1\\
+   1\\
+   0\\
+  
+  \end{bmatrix}
+  \quad
+  $$
+\end{center}
+
+Now, we convert it;\\
+
+\begin{center}
+  f(a) = $\underbrace{0 1 1 1}_\text{7} \underbrace{1 0 1 1}_\text{b}  $
+\end{center}
+
+\underline{Result: } As it is seen, result of the process and to f(a) Sub-byte table value are equal.
 
 
 \end{document}
