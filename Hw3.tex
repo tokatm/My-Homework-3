@@ -80,8 +80,8 @@ are equal}\\
  
 Key scheduling is exactly independent a process from making ciphertext. The first half of the 56-bit key is left, also its second half 
 is right are called as. At the same time, entire of the this process is logic and can be inversion.Now, we can establish the logical connection. 
-$K_{i}$ values is generated after from come side by side $C_{i}$  and $D_{i}$ values,and this process cocnsists two of two steps.
-(a) Left-shift and (b) PC2. $C_{i}$  and $D_{i}$ values are make left-shift for each round. After new values are permuted with PC2. According to our suppose,
+$K_{i}$ values is generated after from come side by side $C_{i}$  and $D_{i}$ values,and this process consists of two steps.
+(a) Left-shift and (b) PC2. $C_{i}$  and $D_{i}$ values are make left-shift for each round in themselves. After new values are permuted with PC2. According to our suppose,
 if entire of the our keys are same, this mean entire of  $C_{i}$ are same and also $D_{i}$ are same. I encrypted the 'CryptoEn' to explain with an example.
 The result is as follow.\\
 \begin{figure}[!h]
@@ -296,11 +296,11 @@ I will do it this way: at first, I will find corresponding of (5c) value from Su
 in GF($2^{8}$) of this value.\\
 
 Also, I will try to find with c = A.b + d formula. In this formula, because of a(x) $\neq$ 0, we will compute its multiplicative inverse. After, 
-of its the result  will be equal to b(x). Then, we will multiplication of b(x) with a fixed A matrix. Finally, we will add the result of 
-this process also to a fixed  b(x) matrix.
+its the result  will be equal to b(x). Then, we will multiplication of b(x) with a fixed A matrix. Finally, we will add the result of 
+this process also to a fixed  d vector.
 
 \begin{center}
-  (5c) = 01011100 (as an order; $x^{7}+x^{6}+ \Longrightarrow +x^{1}+x^{0}$ )
+  (5c) = 01011100 (as order; $x^{6}+x^{4}+ \Longrightarrow +x^{3}+x^{2}$ )
 \end{center}
 
 \lstset{language=Python}
@@ -502,7 +502,7 @@ Then, we will multiplication of b(x) with a fixed A matrix.  Finally, we will ad
 \end{center}
 
 \begin{center}
-  $$f(f) = 
+  $$f(a) = 
   \begin{bmatrix} 
    1\\
    1\\
